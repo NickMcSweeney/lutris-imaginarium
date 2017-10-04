@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <div class="cover-logo-img"/>
+    <ul>
+      <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/blog">My Blog</router-link></li>
+      <li><router-link to="/about">About Me</router-link></li>
+      <li><router-link to="/contents">Site Directory</router-link></li>
+    </ul>
     <router-view></router-view>
   </div>
 </template>
@@ -20,13 +25,21 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.cover-logo-img {
-  background-image: url('./assets/light-cover-logo.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  width: 50rem;
-  height: 40rem;
+ul {
+  list-style-type: none;
+  padding: 0;
+  min-width: 50rem;
+  height: auto;
   margin: 0 auto;
 }
+
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+a {
+  color: #201939;
+}
+
 </style>
