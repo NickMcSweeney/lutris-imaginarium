@@ -4,8 +4,12 @@
       <h1>{{ title }}</h1>
       <h2>{{ subtitle }}</h2>
     </div>
+    <div>
+      <img src="../assets/the_cloud.png"/>
+      <h6>Image thanks to xkcd: <a href="https://xkcd.com/1084/">https://xkcd.com/1084/</a></h6>
+    </div>
     <div class="body-content">
-      <p>{{ bodyText }}</p>
+      <p v-for="line in bodyText">{{ line }}</p>
     </div>
   </div>
 </template>
@@ -15,9 +19,9 @@ export default {
   name: 'blog',
   data () {
     return {
-      title: "title content",
-      subtitle: "subtitle content",
-      bodyText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris rhoncus mollis augue, eu fringilla quam scelerisque in. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras eu laoreet sem, sodales egestas enim. In hac habitasse platea dictumst. Integer laoreet augue augue, interdum tempus lorem tristique et. Morbi eu commodo metus, vitae interdum leo. Pellentesque consequat risus sit amet tristique blandit. Proin in turpis erat. Nulla lobortis odio libero, ac commodo ligula sagittis vel. Mauris consequat tincidunt neque id efficitur. Duis mattis dapibus tempor. Suspendisse elementum imperdiet bibendum.Aliquam varius non diam et condimentum. Curabitur in blandit tellus. Vivamus non lobortis dolor. Quisque ut arcu elementum, ultricies felis nec, molestie nibh. Mauris fringilla ornare libero, convallis euismod nunc rhoncus vel. Nunc bibendum ante sapien, fermentum maximus risus porta eget. Fusce iaculis convallis arcu. Donec erat nibh, sagittis at lacus vitae, molestie faucibus eros. In et felis pharetra, interdum est quis, pretium dui. Pellentesque quis egestas lacus. In eu aliquam nisi. Curabitur feugiat rhoncus lorem, vitae mattis velit. Fusce at magna felis. Nunc porttitor nisl justo, et tincidunt metus iaculis non. Pellentesque tortor turpis, volutpat eu ante sed, commodo euismod arcu. Proin ut dolor nec sapien placerat ornare nec eget augue. Maecenas mollis pellentesque tincidunt. Phasellus euismod nibh id nunc congue, imperdiet egestas velit tristique. Nulla ac ante justo. Nullam tincidunt libero eu justo vulputate vehicula. Morbi quis eros vitae ipsum rutrum tempor et sit amet nibh. Mauris hendrerit ante ac sapien finibus bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam in enim sit amet mi porttitor accumsan. Fusce rhoncus nisi eget ligula vehicula interdum. Suspendisse dapibus enim eget nisl porta, eget viverra lacus rutrum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum bibendum tellus justo, non feugiat enim convallis ut. Cras purus tellus, lobortis ut felis vitae, feugiat volutpat justo. Ut ut viverra neque. Curabitur cursus lobortis dolor sed egestas. Nam ex massa, ultricies nec nibh ut, cursus congue neque. Nullam consequat volutpat nulla. Cras pellentesque neque massa, ut aliquam orci interdum sed. In eget erat lectus. Vivamus nisl odio, mollis quis lectus eget, rutrum pharetra velit. Maecenas consequat erat purus, nec finibus nisl pellentesque non.",
+      title: "Arch Linux MongoDB Koa Nginx Node Vue = ???",
+      subtitle: "Learning how servers work, and mean lamps, and stuff",
+      bodyText: ["This is the story of how a very old disintegrating laptop is now humming along in a box running this website...", "Once upon a time a laptop was going to be thrown away because it was old, It's screen was falling off, it kept forgetting who he was and falling asleep. But a young man saw an unseen potential for this old laptop and gave him a new life.", "Chapter 1 Linux: This may have actually been the most straightforward Arch Linux install that I have ever done. Just a simple 2 part partition and no GUI to speak of (on the todo list is to actually write out my current hoop-jumping that I do for a non-server arch install).", "Chapter 2 Node or Apache: I went with the node side because I already work with JavaScript so it should be more applicable and require less learning on my end. However, I do have plans to set up the backend to take Python (if I ever get this site to a point it actually does anything). Having modularity and customizability is going to be one of the main themes of this project, just a heads up.", "Chapter 3 Making node do something...really anything: So like I just said, modularity and customizability are what drew me to Koa as middleware for building the server. That and being different and difficult. Building out a basic server file turns out to be super simple -- figuring out how to deploy in a production environment, huge secret. I did end up figuring out though and am using PM2 and Arch's Systemd to run the server as a local host. which is where Nginx comes in.", "Chapter 4 How Nginx got invited to the party: Everything I've read so far recommends doing some kind of proxing for your server and hand in hand with that is Nginx. And sure there is an add-on for Koa that does proxying, but I really like making my life harder for some reason. And it was a great opportunity to take a peek at one of the most popular pieces of server software. So I got everything set up to have Nginx proxy a local server out to the machines IP, which was pretty easy. Just had to use proxy_pass.", "Chapter 5 Firewalls: I did spend about 2 days trying to figure out why nobody could see the website until I found this great article (https://ncona.com/2013/02/making-your-local-server-accessible-from-anywhere/) about firewall configuration. And that's how I got the server setup outside the firewall (silly me).", "Chapter 6 Mongo: I'm actually not sure if Mongo is the best idea for what I'm doing, but I really wanted to play with it ('cause it's all new and shiny). That said, I barely have an excuse to need an actual database at this point.", "But now there's some content on the site, and there is a happy old nearly overheating laptop that can share my ramblings with the world.", "And he lived happily ever after for the remainder of his days,","The End."],
     }
   }
 }
@@ -56,4 +60,7 @@ export default {
     margin: 0 auto
     p
       font-size: 1rem
+      text-align: justify
+  h6
+    margin: 0 auto
 </style>

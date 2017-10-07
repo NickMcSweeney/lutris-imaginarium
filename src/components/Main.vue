@@ -5,13 +5,13 @@
       <h1>{{ title }}</h1>
       <h2>{{ intro }}</h2>
       <h2>{{ msg }}</h2>
-      <ul>
+      <!-- <ul>
         <li><a href="https://imgs.xkcd.com/comics/self_driving.png" target="_blank">Confirm Humanity</a></li>
         <li><a href="https://imgs.xkcd.com/comics/good_code.png" target="_blank">My current development process</a></li>
         <li><a href="https://imgs.xkcd.com/comics/server_attention_span.png" target="_blank">Moble version</a></li>
         <li><a href="https://imgs.xkcd.com/comics/server_problem.png" target="_blank">Current server development process</a></li>
         <li><a href="https://imgs.xkcd.com/comics/the_cloud.png" target="_blank">Current server stability</a></li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </template>
@@ -23,7 +23,7 @@ export default {
     return {
       title: 'Welcome to My web page',
       intro: 'My name is Nicholas Shindler',
-      msg: 'We are still in development an actual site is coming soon...'
+      msg: 'We are still in development an actual site is coming soon... But there is starting to be content! I have an about me and my first blog entry done. Go to my blog to learn about this sites creation process.'
     }
   }
 }
@@ -52,14 +52,15 @@ a {
   background-image: url('../assets/light-cover-logo.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: 36rem auto;
   width: 50rem;
-  height: 30rem;
+  height: 15rem;
   margin: 0 auto;
   padding: 5rem 0;
 }
 .main-body {
   min-width: 50rem;
+  max-width: 60rem;
   height: auto;
   margin: 0 auto;
 }
