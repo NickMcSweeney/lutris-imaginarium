@@ -44,14 +44,6 @@ export default {
     h1, h2
       margin: 0 auto
       text-transform: capitalize
-    h1
-      font-size: 2rem
-      font-weight: bold
-      // letter-spacing: 0.08rem
-    h2
-      font-size: 1.5rem
-      font-weight: lighter
-      letter-spacing: 0.06rem
   .body-content
     width: 50rem
     min-height: 40rem

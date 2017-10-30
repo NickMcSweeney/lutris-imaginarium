@@ -1,5 +1,8 @@
 <template>
   <div class="content">
+    <h2>Rocket Ship</h2>
+    <h4> Designing and building a model rocket</h4>
+
 
   </div>
 </template>
@@ -10,27 +13,28 @@ export default {
   data () {
     return {
     }
+  },
+  props: {
+    id: {
+      require: true
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
+<style lang="stylus" scoped>
+.content
+  margin: 1rem
+  padding: 0
+  width: 100%
+  box-sizing: border-box
+  height: 100%
+  .header-content
+    width: 50rem
+    min-height: 5rem
+    padding: 1rem
+    box-sizing: border-box
+    margin: 0 auto
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>

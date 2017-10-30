@@ -30,38 +30,30 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
+<style lang="stylus" scoped>
+h1, h2
+  font-weight: normal
+ul
+  list-style-type: none
+  padding: 0
+li
+  display: inline-block
+  margin: 0 10px
+a
+  color: #201939
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #201939;
-}
-.cover-logo-img {
-  background-image: url('../assets/light-cover-logo.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 36rem auto;
-  width: 50rem;
-  height: 15rem;
-  margin: 0 auto;
-  padding: 5rem 0;
-}
-.main-body {
-  min-width: 50rem;
-  max-width: 60rem;
-  height: auto;
-  margin: 0 auto;
-}
+.cover-logo-img
+  background-image: url('../assets/light-cover-logo.svg')
+  background-repeat: no-repeat
+  background-position: center
+  background-size: 36rem auto
+  width: 50rem
+  height: 15rem
+  margin: 0 auto
+  padding: 5rem 0
+.main-body
+  min-width: 50rem
+  max-width: 60rem
+  height: auto
+  margin: 0 auto
 </style>

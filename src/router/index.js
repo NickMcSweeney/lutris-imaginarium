@@ -4,6 +4,8 @@ import Main from '@/components/Main'
 import About from '@/components/About'
 import Contents from '@/components/Contents'
 import Blog from '@/components/Blog'
+import Portfolio from '@/components/Portfolio'
+import Photos from '@/components/Photos'
 
 Vue.use(Router)
 
@@ -20,7 +22,7 @@ export default new Router({
       component: About
     },
     {
-      path: '/contents',
+      path: 'portfolio/contents/:id/',
       name: 'Contents',
       component: Contents
     },
@@ -28,6 +30,16 @@ export default new Router({
       path: '/blog',
       name: 'Blog',
       component: Blog
+    },
+    {
+      path: '/portfolio',
+      name: 'Portfolio',
+      component: Portfolio
+    },
+    {
+      path: '/portfolio/photos',
+      name: 'Photos',
+      component: Photos
     }
   ]
 })
