@@ -1,8 +1,12 @@
 <template>
   <div class="content">
-    <h2>Photography</h2>
+    <div class="header-content">
+      <h2>Photography</h2>
+    </div>
 
-    <div></div>
+    <div>
+      <!-- TODO: put stuff here pulled from db -->
+    </div>
   </div>
 </template>
 
@@ -31,12 +35,20 @@ export default {
   height: 100%
   .header-content
     width: 50rem
-    min-height: 5rem
-    padding: 1rem
+    height: 12rem
+    padding: 3rem 0 5rem 18rem
     box-sizing: border-box
     margin: 0 auto
-    h1, h2
-      margin: 0 auto
+    background-image: url('../assets/header-logo.svg')
+    background-repeat: no-repeat
+    background-position: center
+    background-size: contain
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    h2
+      margin: auto 0
       text-transform: capitalize
+      padding: 0 3rem
 
 </style>

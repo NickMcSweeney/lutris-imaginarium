@@ -1,5 +1,8 @@
 <template>
   <div class="content">
+    <div class="menu-thingy">
+      <div class="arrow-menu-thing"></div>
+    </div>
     <div class="header-content">
       <h1>{{ title }}</h1>
       <h2>{{ subtitle }}</h2>
@@ -35,6 +38,23 @@ export default {
   width: 100%
   box-sizing: border-box
   height: 100%
+  .menu-thingy
+    width: 50rem
+    height: auto
+    margin: 0 auto
+    display: flex
+    justify-content: center
+    align-items: center
+    // border-top: 1px solid rgb(42, 37, 46)
+    border-bottom: 1px solid rgb(42, 37, 46)
+    .arrow-menu-thing
+      width: 2rem
+      height: 2rem
+      background-image: url('../assets/thin-down.svg')
+      background-repeat: no-repeat
+      background-position: center
+      background-size: contain
+
   .header-content
     width: 50rem
     min-height: 5rem
