@@ -13,6 +13,7 @@
         class="satelite-content"
         :class="route.position"
         :id="route.img"
+        key
       >
         <div class="text-block">{{ route.tag }}</div>
       </router-link>
