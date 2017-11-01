@@ -1,14 +1,7 @@
 <template>
   <div class="content">
     <div class="menu-thingy">
-      <div class="menu-collapse" @click="showMenu = !showMenu">
-        <!-- <div v-if="!showMenu">Show directory</div>
-        <div v-else>Hide directory</div> -->
-        <!-- <div class="arrow-menu-thing" :class="{'arrow-up': showMenu}"></div> -->
-        <circle-menu></circle-menu>
-      </div>
-      <div v-if="showMenu" class="blog-menu">
-      </div>
+      <circle-menu></circle-menu>
     </div>
     <div class="header-content">
       <h1>{{ title }}</h1>
@@ -47,7 +40,6 @@ export default {
         "And he lived happily ever after for the remainder of his days,",
         "The End.",
       ],
-      showMenu: false,
     };
   },
   methods: {
