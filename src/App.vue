@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{'dark-mode': nameRoute}">
     <ul>
       <li><router-link to="/">Home</router-link></li>
       <li><router-link to="/blog">My Blog</router-link></li>
@@ -13,18 +13,33 @@
 
 <script>
 export default {
-  name: 'app'
-}
+  name: "app",
+  computed: {
+    nameRoute() {
+      return this.$route.path === "/buddha-mode";
+    }
+  }
+};
 </script>
 
 <style lang="stylus">
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  padding: 60px 0;
+  width: 100%;
+  height: 100%
+  box-sizing: border-box;
 }
 ul {
   list-style-type: none;

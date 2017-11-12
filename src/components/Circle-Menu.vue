@@ -1,10 +1,11 @@
 <template>
-  <div class="content" @click="toggleMenu" :class="{'show-menu': showMenu}">
-    <svg width="6.5rem" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <div class="content" :class="{'show-menu': showMenu}">
+
+    <svg id="svg" @click="toggleMenu" width="104px" align="center" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <g id="Page-1" align-items="center" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <g id="other-stuff" transform="translate(-208.000000, -236.000000)">
                 <g id="graph-tree-circle" transform="translate(109.000000, 218.000000)">
-                    <g class="draw-lines" id="tree" transform="translate(0.000000, 74.000000)" stroke="#291E2E" stroke-width="2" stroke-linecap="round">
+                    <g class="draw-lines" id="tree" transform="translate(-2.000000, 74.000000)" stroke="#291E2E" stroke-width="2" stroke-linecap="round">
                         <path d="M155.5,52.5 L155.5,86.5" id="L0"></path>
                     </g>
                     <g id="circle-thing" transform="translate(82.000000, 0.000000)">
@@ -67,8 +68,9 @@
             </g>
         </g>
     </svg>
-    <transition mode="out-in">
-      <div v-if="showMenu" class="blog-menu">A.L.M.K.N.N.V</div>
+    <transition name="fade" mode="out-in">
+      <h6 v-if="showMenu" @click="selectItem"  v-for="item in menuItem" class="blog-menu"><strong>[</strong> {{ item }} <strong>]</strong></h6>
+      <h5 v-else class="blog-menu">{  Welcome to my blog  }</h5>
     </transition>
   </div>
 </template>
@@ -78,14 +80,24 @@ export default {
   name: "circle-menu",
   data() {
     return {
-      showMenu: false,
+      showMenu: false
     };
   },
+  props: {
+    menuItem: {
+      required: true
+    }
+  },
   methods: {
-    toggleMenu(){
-      if(this.showMenu) this.erase()
-      else this.draw()
-      this.showMenu = !this.showMenu
+    selectItem(event) {
+      this.toggleMenu();
+      if (this.showMenu) this.$emit("clear");
+      else this.$emit("menuSelect", event.target.innerText);
+    },
+    toggleMenu() {
+      if (this.showMenu) this.erase();
+      else this.draw();
+      this.showMenu = !this.showMenu;
     },
     draw() {
       var path = document.getElementById("L0");
@@ -120,8 +132,11 @@ export default {
         "stroke-dashoffset 1.5s ease-in-out";
       // Go!
       path.style.strokeDashoffset = length;
-    },
+    }
   },
+  mounted() {
+    this.toggleMenu();
+  }
 };
 </script>
 
@@ -129,7 +144,7 @@ export default {
 <style lang="stylus" scoped>
 .content
   width: 40rem
-  height: 6.5rem
+  height: auto
   padding: 0 2rem
   display: flex
   justify-content: flex-start
@@ -140,14 +155,35 @@ export default {
   #tree path
     stroke-dashoffset: 1000
     stroke-dasharray: 1000
-  svg
+  #svg
     height: auto
+    background-color: rgba(0,0,0,0)
+    cursor: pointer
 .show-menu
-  height: 14rem
-  svg
+  height: auto
+  #svg
+    background-color: rgba(0,0,0,0)
     height: auto
 .blog-menu
+  background-color: rgba(0,0,0,0)
+h5
+  margin: 0
+  font-size: 1rem
+h6
+  margin: 0
   font-size: .78rem
+  font-weight: 500
+  cursor: pointer
 
-
+.fade-enter-active, .fade-leave-active
+  opacity: 1
+  transition: opacity .6s ease-in-out
+.fade-enter, .fade-leave-active
+  opacity: 0
+.fade-enter, .fade-enter-active
+  background-color: rgba(0,0,0,0)
+  transition-delay: 1s
+.fade-leave-active, .fade-leave
+  background-color: rgba(0,0,0,0)
+  transition-delay: .05s
 </style>

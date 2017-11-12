@@ -47,18 +47,18 @@ export default {
           position: "bottom-left",
           img: "venice",
           tag: "Coding projects"
-        },
-      },
+        }
+      }
     };
-  },
+  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus" scoped>
 .content
-  margin: 1rem
-  padding: 0
+  margin: 0
+  padding: 1rem
   width: 100%
   box-sizing: border-box
   height: 100%
