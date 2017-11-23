@@ -17,8 +17,8 @@ export default {
   computed: {
     nameRoute() {
       return this.$route.path === "/buddha-mode";
-    }
-  }
+    },
+  },
 };
 </script>
 

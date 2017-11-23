@@ -15,37 +15,37 @@ export default new Router({
     {
       path: "/",
       name: "Main",
-      component: Main
+      component: Main,
     },
     {
       path: "/about",
       name: "About",
-      component: About
+      component: About,
     },
     {
       path: "portfolio/contents/:id/",
       name: "Contents",
-      component: Contents
+      component: Contents,
     },
     {
       path: "/blog",
       name: "Blog",
-      component: Blog
+      component: Blog,
     },
     {
       path: "/portfolio",
       name: "Portfolio",
-      component: Portfolio
+      component: Portfolio,
     },
     {
       path: "/portfolio/photos",
       name: "Photos",
-      component: Photos
+      component: Photos,
     },
     {
       path: "/buddha-mode",
       name: "BuddhaMode",
-      component: BuddhaMode
-    }
-  ]
+      component: BuddhaMode,
+    },
+  ],
 });

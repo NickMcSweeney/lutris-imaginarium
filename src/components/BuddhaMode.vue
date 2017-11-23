@@ -27,12 +27,12 @@ export default {
     return {
       title: "Pedo mellon a minno",
       subtitle: "Speak friend and enter",
-      authenticated: false
+      authenticated: false,
     };
   },
   mounted() {
     //do something after mounting vue instance
-  }
+  },
 };
 </script>
 

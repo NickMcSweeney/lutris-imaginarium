@@ -80,13 +80,13 @@ export default {
   name: "circle-menu",
   data() {
     return {
-      showMenu: false
+      showMenu: false,
     };
   },
   props: {
     menuItem: {
-      required: true
-    }
+      required: true,
+    },
   },
   methods: {
     selectItem(event) {
@@ -132,11 +132,11 @@ export default {
         "stroke-dashoffset 1.5s ease-in-out";
       // Go!
       path.style.strokeDashoffset = length;
-    }
+    },
   },
   mounted() {
     this.toggleMenu();
-  }
+  },
 };
 </script>
 

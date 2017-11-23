@@ -20,21 +20,21 @@ export const store = new Vuex.Store({
         "Chapter 6 Mongo: I'm actually not sure if Mongo is the best idea for what I'm doing, but I really wanted to play with it ('cause it's all new and shiny). That said, I barely have an excuse to need an actual database at this point.",
         "But now there's some content on the site, and there is a happy old nearly overheating laptop that can share my ramblings with the world.",
         "And he lived happily ever after for the remainder of his days,",
-        "The End."
+        "The End.",
       ],
-      imgUrl: "../assets/the_cloud.png"
+      imgUrl: "../assets/the_cloud.png",
     },
-    blogs: {}
+    blogs: {},
   },
   mutations: {
     setCurrentStory: function(state, value) {
       state.currentStory = value;
-    }
+    },
   },
   getters: {
     getCurrentStory: state => {
       return state.currentStory;
-    }
+    },
   },
   actions: {
     currentStory(context, payload) {
@@ -50,6 +50,6 @@ export const store = new Vuex.Store({
       } catch (e) {
         console.error(e);
       }
-    }
-  }
+    },
+  },
 });

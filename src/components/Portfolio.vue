@@ -34,23 +34,23 @@ export default {
           path: "portfolio/photos",
           position: "top-left",
           img: "mountain-lake",
-          tag: "Photograpy gallery"
+          tag: "Photograpy gallery",
         },
         code: {
           path: "portfolio/design",
           position: "middle-right",
           img: "the-wall",
-          tag: "Design work"
+          tag: "Design work",
         },
         design: {
           path: "portfolio/code",
           position: "bottom-left",
           img: "venice",
-          tag: "Coding projects"
-        }
-      }
+          tag: "Coding projects",
+        },
+      },
     };
-  }
+  },
 };
 </script>
 

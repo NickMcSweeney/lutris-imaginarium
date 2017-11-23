@@ -18,9 +18,9 @@ export default {
   },
   props: {
     id: {
-      require: true
-    }
-  }
+      require: true,
+    },
+  },
 };
 </script>
 

@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import CircleMenu from "./Circle-Menu";
+const CircleMenu = require("@/components/Circle-Menu");
 
 export default {
   name: "blog",
@@ -36,7 +36,7 @@ export default {
       bodyText: [],
       imgUrl: "",
       showStory: false,
-      showMenu: false
+      showMenu: false,
     };
   },
   methods: {
@@ -54,12 +54,12 @@ export default {
     },
     clearStory() {
       this.showStory = false;
-    }
+    },
   },
   mounted() {
     //do something after mounting vue instance
     this.$store.dispatch("loadBlog");
-  }
+  },
 };
 </script>
 

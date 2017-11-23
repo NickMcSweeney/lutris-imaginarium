@@ -18,15 +18,16 @@
 
 <script>
 export default {
-  name: 'Main',
-  data () {
+  name: "Main",
+  data() {
     return {
-      title: 'Welcome to My web page',
-      intro: 'My name is Nicholas Shindler',
-      msg: 'We are still in development an actual site is coming soon... But there is starting to be content! I have an about me and my first blog entry done. Go to my blog to learn about this sites creation process.'
-    }
-  }
-}
+      title: "Welcome to My web page",
+      intro: "My name is Nicholas Shindler",
+      msg:
+        "We are still in development an actual site is coming soon... But there is starting to be content! I have an about me and my first blog entry done. Go to my blog to learn about this sites creation process.",
+    };
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
