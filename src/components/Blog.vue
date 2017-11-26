@@ -58,7 +58,7 @@ export default {
   },
   mounted() {
     //do something after mounting vue instance
-    this.$store.dispatch("loadBlog");
+    // this.$store.dispatch("loadBlog");
   },
 };
 </script>

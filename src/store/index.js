@@ -42,7 +42,7 @@ export const store = new Vuex.Store({
     },
     async loadBlog(context) {
       try {
-        const res = await fetch("http://127.0.0.1:3001/getNamedData/blog");
+        const res = await fetch("http://127.0.0.1:3003/getNamedData/blog");
         console.log(res);
         res.data.forEach(blog => {
           context.state.blogs[blog.title] = blog;
