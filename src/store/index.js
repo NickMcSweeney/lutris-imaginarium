@@ -27,12 +27,12 @@ export const store = new Vuex.Store({
     blogs: {},
   },
   mutations: {
-    setCurrentStory: function(state, value) {
+    setCurrentStory(state, value) {
       state.currentStory = value;
     },
   },
   getters: {
-    getCurrentStory: state => {
+    getCurrentStory(state) {
       return state.currentStory;
     },
   },

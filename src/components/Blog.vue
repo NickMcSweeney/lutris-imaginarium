@@ -24,7 +24,7 @@
 </template>
 
 <script>
-const CircleMenu = require("@/components/Circle-Menu");
+import CircleMenu from "@/components/Circle-Menu";
 
 export default {
   name: "blog",
