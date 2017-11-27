@@ -6,6 +6,8 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
+    jwt: null,
+    auth: false,
     currentStory: {
       title: "Arch Linux MongoDB Koa Nginx Node Vue = ???",
       subtitle: "Learning how servers work, and mean lamps, and stuff",
@@ -30,26 +32,75 @@ export const store = new Vuex.Store({
     setCurrentStory(state, value) {
       state.currentStory = value;
     },
+    setJWT(state, value) {
+      state.jwt = value;
+    },
+    setAuth(state, value) {
+      state.auth = value;
+    },
   },
   getters: {
     getCurrentStory(state) {
       return state.currentStory;
+    },
+    isAuth(state) {
+      return state.auth;
     },
   },
   actions: {
     currentStory(context, payload) {
       context.commit("setCurrentStory", payload);
     },
-    async loadBlog(context) {
-      try {
-        const res = await fetch("http://127.0.0.1:3003/getNamedData/blog");
-        console.log(res);
-        res.data.forEach(blog => {
-          context.state.blogs[blog.title] = blog;
+    // async loadBlog(context) {
+    //   try {
+    //     const res = await fetch("http://127.0.0.1:3003/getNamedData/blog");
+    //     console.log(res);
+    //     res.data.forEach(blog => {
+    //       context.state.blogs[blog.title] = blog;
+    //     });
+    //   } catch (e) {
+    //     console.error(e);
+    //   }
+    // },
+    loginBuddhaMode(context, payload) {
+      let body = new Object();
+      body.username = payload.username;
+      body.password = payload.password;
+      body = JSON.stringify(body);
+
+      let headers = new Headers();
+      headers.append("Content-Type", "application/json");
+
+      const init = {
+        method: "POST",
+        headers,
+        body,
+        mode: "cors",
+        cache: "default",
+      };
+
+      fetch("http://127.0.0.1:3003/login/", init)
+        .then(res => {
+          if (res.status === 200) {
+            return res.json();
+          } else {
+            throw "Endpoint Failure";
+          }
+        })
+        .then(body => {
+          console.log("store: ", body);
+          if (body.sucess) {
+            context.commit("setJWT", body.jwt);
+            context.commit("setAuth", body.sucess);
+          } else {
+            throw "Invalid Login";
+          }
+        })
+        .catch(e => {
+          context.commit("setJWT", null);
+          context.commit("setAuth", false);
+          console.error(e);
         });
-      } catch (e) {
-        console.error(e);
-      }
     },
   },
 });

@@ -5,15 +5,21 @@
       <h2>{{ subtitle }}</h2>
     </div>
     <div class="body-content">
-      <div v-if="authenticated"></div>
+      <div v-if="authenticated">
+        <h1>Welcome</h1>
+        <textarea
+          class="text-enter"
+          v-model="newBlog"
+        />
+      </div>
       <div v-else>
         <div class="login-item">
           <!-- <label>Username: </label> -->
-          <input placeholder="Username"/>
+          <input id="user-name" placeholder="Username" @keydown.enter.stop.prevent="nextinput" tabIndex="1" v-model="username" type="text" required/>
         </div>
         <div class="login-item">
           <!-- <label>Password: </label> -->
-          <input placeholder="Password"/>
+          <input id="user-password" placeholder="Password" @keydown.enter.stop.prevent="submitMe" tabIndex="1" v-model="password" type="password" required/>
         </div>
       </div>
     </div>
@@ -27,8 +33,29 @@ export default {
     return {
       title: "Pedo mellon a minno",
       subtitle: "Speak friend and enter",
-      authenticated: false,
+      username: null,
+      password: null,
+      newBlog: null,
     };
+  },
+  computed: {
+    authenticated() {
+      return this.$store.getters.isAuth;
+    },
+  },
+  methods: {
+    nextinput() {
+      document.getElementById("user-password").focus();
+    },
+    submitMe() {
+      const username = this.username;
+      const password = this.password;
+      try {
+        this.$store.dispatch("loginBuddhaMode", { username, password });
+      } catch (e) {
+        console.error(e);
+      }
+    },
   },
   mounted() {
     //do something after mounting vue instance
@@ -71,6 +98,14 @@ export default {
     display: flex
     justify-content: top
     flex-direction: column
+    .text-enter
+      margin: 1rem auto
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      align-items: center
+      width: 20rem
+      height: 10rem
     .login-item
       margin: 1rem auto
       display: flex

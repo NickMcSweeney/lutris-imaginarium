@@ -16,7 +16,11 @@ export default {
   name: "app",
   computed: {
     nameRoute() {
-      return this.$route.path === "/buddha-mode";
+      return (
+        this.$route.name == "BuddhaMode" ||
+        this.$route.path == "/buddha-mode" ||
+        this.$route.fullPath == "/buddha-mode/"
+      );
     },
   },
 };

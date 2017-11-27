@@ -28,7 +28,7 @@ import CircleMenu from "@/components/Circle-Menu";
 
 export default {
   name: "blog",
-  components: { "circle-menu": CircleMenu },
+  components: { CircleMenu },
   data() {
     return {
       title: "",
