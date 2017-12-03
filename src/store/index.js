@@ -8,6 +8,9 @@ export const store = new Vuex.Store({
   state: {
     jwt: null,
     auth: false,
+
+    blogList: [],
+
     currentStory: {
       title: "Arch Linux MongoDB Koa Nginx Node Vue = ???",
       subtitle: "Learning how servers work, and mean lamps, and stuff",
@@ -38,10 +41,16 @@ export const store = new Vuex.Store({
     setAuth(state, value) {
       state.auth = value;
     },
+    setBlogList(state, value) {
+      state.blogList = value;
+    },
   },
   getters: {
     getCurrentStory(state) {
       return state.currentStory;
+    },
+    getBlogList(state) {
+      return state.blogList;
     },
     isAuth(state) {
       return state.auth;
@@ -62,6 +71,67 @@ export const store = new Vuex.Store({
     //     console.error(e);
     //   }
     // },
+    blogList(context, payload) {
+      let headers = new Headers();
+      headers.append("Content-Type", "application/json");
+
+      const init = {
+        method: "GET",
+        headers,
+        mode: "cors",
+        cache: "default",
+      };
+
+      fetch("http://127.0.0.1:3003/blog/listItems", init)
+        .then(res => {
+          if (res.status === 200) {
+            return res.json();
+          } else {
+            throw "Endpoint Failure";
+          }
+        })
+        .then(body => {
+          console.log("store: ", body);
+          context.commit("setBlogList", body.list);
+        })
+        .catch(e => {
+          console.error(e);
+        });
+    },
+    saveBlogEntry(context, payload) {
+      let body = new Object();
+      body.jwt = payload.userJwt;
+      body.content = payload.content;
+      body = JSON.stringify(body);
+
+      let headers = new Headers();
+      headers.append("Content-Type", "application/json");
+
+      const init = {
+        method: "POST",
+        headers,
+        body,
+        mode: "cors",
+        cache: "default",
+      };
+
+      fetch("http://127.0.0.1:3003/blog/addItem", init)
+        .then(res => {
+          if (res.status === 200) {
+            return res.json();
+          } else {
+            throw "Endpoint Failure";
+          }
+        })
+        .then(body => {
+          console.log("store: ", body);
+          return true;
+        })
+        .catch(e => {
+          console.error(e);
+          return e;
+        });
+    },
     loginBuddhaMode(context, payload) {
       let body = new Object();
       body.username = payload.username;
@@ -92,6 +162,7 @@ export const store = new Vuex.Store({
           if (body.sucess) {
             context.commit("setJWT", body.jwt);
             context.commit("setAuth", body.sucess);
+            localStorage.setItem("user-jwt", body.jwt);
           } else {
             throw "Invalid Login";
           }

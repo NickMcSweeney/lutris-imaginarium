@@ -1,11 +1,14 @@
 <template>
   <div class="content">
     <div class="menu-thingy">
-      <circle-menu
-        :menuItem="['A.L.M.K.N.N.V']"
+      <!-- <circle-menu
+        :menuItem="blogItems"
         @menuSelect="loadStory"
         @clear="clearStory"
-      ></circle-menu>
+      ></circle-menu> -->
+      <div v-for="item in blogItems" key class="block-menu" @click="loadStory">
+        {{item}}
+      </div>
     </div>
     <div v-if="showStory">
     <div class="header-content">
@@ -24,11 +27,11 @@
 </template>
 
 <script>
-import CircleMenu from "@/components/Circle-Menu";
+// import CircleMenu from "@/components/Circle-Menu";
 
 export default {
   name: "blog",
-  components: { CircleMenu },
+  // components: { CircleMenu },
   data() {
     return {
       title: "",
@@ -38,6 +41,11 @@ export default {
       showStory: false,
       showMenu: false,
     };
+  },
+  computed: {
+    blogItems() {
+      return this.$store.getters.getBlogList;
+    },
   },
   methods: {
     expandMenu() {
@@ -58,7 +66,7 @@ export default {
   },
   mounted() {
     //do something after mounting vue instance
-    // this.$store.dispatch("loadBlog");
+    this.$store.dispatch("blogList");
   },
 };
 </script>
@@ -72,15 +80,23 @@ export default {
   box-sizing: border-box
   height: 100%
   .menu-thingy
-    width: 50rem
+    width: 25rem
     height: auto
     margin: 0 auto
-    display: flex
+    background-color: rgb(42, 37, 46)
+    /*display: flex
     flex-direction: column
     justify-content: center
-    align-items: center
+    align-items: center*/
     // border-top: 1px solid rgb(42, 37, 46)
     // border-bottom: 1px solid rgb(42, 37, 46)
+    .block-menu
+      display: inline-block
+      margin: .05rem .1rem
+      padding: 0.2rem 1rem
+      width: auto
+      background-color: white
+      cursor: pointer
   .header-content
     width: 50rem
     min-height: 5rem

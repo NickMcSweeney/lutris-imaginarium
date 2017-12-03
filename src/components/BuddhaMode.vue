@@ -7,10 +7,14 @@
     <div class="body-content">
       <div v-if="authenticated">
         <h1>Welcome</h1>
+        <input name="title" class="title-enter" type="text" placeholder="Title" v-model="entry.title"/>
+        <input name="subtitle" class="title-enter" type="text" placeholder="Subtitle" v-model="entry.subtitle"/>
         <textarea
           class="text-enter"
-          v-model="newBlog"
+          v-model="entry.body"
+          placeholder="Body"
         />
+        <button class="submit" @click="submitBlogItem">Submit</button>
       </div>
       <div v-else>
         <div class="login-item">
@@ -35,7 +39,11 @@ export default {
       subtitle: "Speak friend and enter",
       username: null,
       password: null,
-      newBlog: null,
+      entry: {
+        title: null,
+        subtitle: null,
+        body: null,
+      },
     };
   },
   computed: {
@@ -51,7 +59,26 @@ export default {
       const username = this.username;
       const password = this.password;
       try {
-        this.$store.dispatch("loginBuddhaMode", { username, password });
+        const res = this.$store.dispatch("loginBuddhaMode", {
+          username,
+          password,
+        });
+        if (res) {
+          console.log("Success!");
+        } else {
+          throw res;
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    submitBlogItem() {
+      const userJwt = localStorage.getItem("user-jwt");
+      try {
+        this.$store.dispatch("saveBlogEntry", {
+          userJwt,
+          content: this.entry,
+        });
       } catch (e) {
         console.error(e);
       }
@@ -91,6 +118,7 @@ export default {
       font-style: italic
   .body-content
     width: 50rem
+    height: auto
     min-height: 40rem
     padding: 2rem
     box-sizing: border-box
@@ -98,14 +126,28 @@ export default {
     display: flex
     justify-content: top
     flex-direction: column
+    .title-enter
+      margin: 1rem auto
+      display: flex
+      padding: .5rem 1rem
+      width: 36rem
+      box-sizing: border-box
+      border-radius: 3px
     .text-enter
       margin: 1rem auto
       display: flex
+      padding: .5rem 1rem
       flex-direction: row
       justify-content: space-between
       align-items: center
-      width: 20rem
-      height: 10rem
+      box-sizing: border-box
+      width: 36rem
+      height: 30rem
+    button.submit
+      padding: 1rem 2rem
+      border-radius: 6px
+      border: 0
+      outline: 0
     .login-item
       margin: 1rem auto
       display: flex
