@@ -6,21 +6,21 @@
         @menuSelect="loadStory"
         @clear="clearStory"
       ></circle-menu> -->
-      <div v-for="item in blogItems" key class="block-menu" @click="loadStory">
+      <div v-for="item in blogItems" key class="block-menu" @click="loadStory(item)">
         {{item}}
       </div>
     </div>
     <div v-if="showStory">
     <div class="header-content">
-      <h1>{{ title }}</h1>
-      <h2>{{ subtitle }}</h2>
+      <h1>{{ currentStory.title }}</h1>
+      <h2>{{ currentStory.subtitle }}</h2>
     </div>
     <div>
       <img src="../assets/the_cloud.png"/>
       <h6>Image thanks to xkcd: <a href="https://xkcd.com/1084/">https://xkcd.com/1084/</a></h6>
     </div>
     <div class="body-content">
-      <p v-for="line in bodyText">{{ line }}</p>
+      <p >{{ currentStory.body }}</p>
     </div>
   </div>
   </div>
@@ -34,9 +34,6 @@ export default {
   // components: { CircleMenu },
   data() {
     return {
-      title: "",
-      subtitle: "",
-      bodyText: [],
       imgUrl: "",
       showStory: false,
       showMenu: false,
@@ -46,18 +43,17 @@ export default {
     blogItems() {
       return this.$store.getters.getBlogList;
     },
+    currentStory() {
+      return this.$store.getters.getCurrentStory;
+    },
   },
   methods: {
     expandMenu() {
       this.showMenu = true;
     },
-    loadStory() {
+    loadStory(item) {
       this.showMenu = false;
-      const story = this.$store.getters.getCurrentStory;
-      this.title = story.title;
-      this.subtitle = story.subtitle;
-      this.bodyText = story.bodyText;
-      this.imgUrl = story.imgUrl;
+      this.$store.dispatch("setCurrentStory", item);
       this.showStory = true;
     },
     clearStory() {
