@@ -4,6 +4,8 @@ import Vuex from "vuex";
 // vue needs loaded and vuex prior to this script included
 Vue.use(Vuex);
 
+const PROD_URL = 'https://www.lutrisimaginarium.com:8080'
+
 export const store = new Vuex.Store({
   state: {
     jwt: null,
@@ -81,7 +83,7 @@ The End.",
         cache: "default",
       };
 
-      fetch("http://127.0.0.1:3003/blog/getItem/", init)
+      fetch(PROD_URL+"/blog/getItem/", init)
         .then(res => {
           if (res.status === 200) {
             return res.json();
@@ -108,7 +110,7 @@ The End.",
         cache: "default",
       };
 
-      fetch("http://127.0.0.1:3003/blog/listItems", init)
+      fetch(PROD_URL+"/blog/listItems", init)
         .then(res => {
           if (res.status === 200) {
             return res.json();
@@ -141,7 +143,7 @@ The End.",
         cache: "default",
       };
 
-      fetch("http://127.0.0.1:3003/blog/addItem", init)
+      fetch(PROD_URL+"/blog/addItem", init)
         .then(res => {
           if (res.status === 200) {
             return res.json();
@@ -175,7 +177,7 @@ The End.",
         cache: "default",
       };
 
-      fetch("http://127.0.0.1:3003/login/", init)
+      fetch(PROD_URL+"/login/", init)
         .then(res => {
           if (res.status === 200) {
             return res.json();
