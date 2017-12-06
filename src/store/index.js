@@ -4,8 +4,8 @@ import Vuex from "vuex";
 // vue needs loaded and vuex prior to this script included
 Vue.use(Vuex);
 
-const PROD_URL = "https://www.lutrisimaginarium.com:8080";
-const SECURE_PROD_URL = "https://www.lutrisimaginarium.com:8080";
+const PROD_URL = "http://www.lutrisimaginarium.com:8080";
+const SECURE_PROD_URL = "https://www.lutrisimaginarium.com:8088";
 
 export const store = new Vuex.Store({
   state: {
