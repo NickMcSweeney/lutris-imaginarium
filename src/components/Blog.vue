@@ -15,12 +15,8 @@
       <h1>{{ currentStory.title }}</h1>
       <h2>{{ currentStory.subtitle }}</h2>
     </div>
-    <div>
-      <img src="../assets/the_cloud.png"/>
-      <h6>Image thanks to xkcd: <a href="https://xkcd.com/1084/">https://xkcd.com/1084/</a></h6>
-    </div>
     <div class="body-content">
-      <p >{{ currentStory.body }}</p>
+      <div class="display">{{ currentStory.body }}</div>
     </div>
   </div>
   </div>
@@ -108,9 +104,15 @@ export default {
     padding: 1rem
     box-sizing: border-box
     margin: 0 auto
-    p
+    .display
+      white-space: pre-line
       font-size: 1rem
       text-align: justify
+      font-family: arial
+      width: 100%
+      cursor: default
+      min-height: 20rem
+      height: auto
   h6
     margin: 0 auto
 </style>

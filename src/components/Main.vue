@@ -4,6 +4,10 @@
     <div class="main-body">
       <h1>{{ title }}</h1>
       <h2>{{ intro }}</h2>
+      <div>
+        <img src="../assets/the_cloud.png"/>
+        <h6>Image thanks to xkcd: <a href="https://xkcd.com/1084/">https://xkcd.com/1084/</a></h6>
+      </div>
       <h2>{{ msg }}</h2>
       <!-- <ul>
         <li><a href="https://imgs.xkcd.com/comics/self_driving.png" target="_blank">Confirm Humanity</a></li>
@@ -24,7 +28,7 @@ export default {
       title: "Welcome to My web page",
       intro: "My name is Nicholas Shindler",
       msg:
-        "We are still in development an actual site is coming soon... But there is starting to be content! I have an about me and my first blog entry done. Go to my blog to learn about this sites creation process.",
+        "I am a software developer among other things. I bult this site to play around this web tech, also there's (barely) a blog, and I am in process of adding my portfolio.",
     };
   },
 };
