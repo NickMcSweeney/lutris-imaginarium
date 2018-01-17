@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
+    "build:icons": "icon-font-generator src/assets/icons/*.svg -o src/assets/stylus -n 'icons' --html true --css false --types 'ttf'",
     "build": "node build/build.js"
   },
   "dependencies": {
@@ -18,6 +19,7 @@
     "vuex": "^2.5.0"
   },
   "devDependencies": {
+    "icon-font-generator": "^1.1.1",
     "autoprefixer": "^7.1.6",
     "babel-core": "^6.22.1",
     "babel-loader": "^7.1.1",
